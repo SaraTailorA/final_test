@@ -1,3 +1,13 @@
+__pycache__/
+*.pyc
+*.pyo
+*.log
+*.tmp
+venv/
+.env/
+*.csv
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
