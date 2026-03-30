@@ -19,7 +19,7 @@ def save_csv(students, file_name):
 
             # Write students
             for student in students:
-                line = f"Name: {student['name']} | ui: {student['ui']} | Age: {student['age']} | Course: {student['course']} | Status: {student['status']}\n"
+                line = f"{student['name']} {student['ui']} {student['age']} {student['course']} {student['status']}\n"
                 file.write(line)
 
         print(f"Students saved successfully in {file_name}.\n")
