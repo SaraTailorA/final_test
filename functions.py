@@ -17,7 +17,7 @@ def add_student(students):
             return  # It throws them onto the menu BEFORE asking for their age
         for student in students:
             if student["ui"] == ui:
-                print("error: This ID alreadyexist.\n")
+                print("error: This ID already exist.\n")
                 return
 
         # If the ID was correct, NOW we will ask for your age

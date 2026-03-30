@@ -55,7 +55,7 @@ while option != "8":
                 students = loaded_students
                 print("Student list overwritten successfully.\n")
             else:
-                # Fusionar por nombre (si existe, suma cantidad y actualiza precio)
+                # Merge UI with the details available
                 for new_item in loaded_students:
                     found = False
                     for existing_item in students:

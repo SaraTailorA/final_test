@@ -14,10 +14,10 @@ def save_csv(students, file_name):
     try:
         # 'with' abre el archivo y lo cierra automáticamente al terminar
         with open(file_name, "w", encoding="utf-8") as file:
-            # Escribir encabezado
+            # Write header
             file.write("name, ui, age, course, status\n")
 
-            # Escribir productos
+            # Write students
             for student in students:
                 line = f"Name: {student['name']} | ui: {student['ui']} | Age: {student['age']} | Course: {student['course']} | Status: {student['status']}\n"
                 file.write(line)
@@ -25,14 +25,14 @@ def save_csv(students, file_name):
         print(f"Students saved successfully in {file_name}.\n")
 
     except Exception as e:
-        # Atrapa cualquier error de permisos o de escritura sin cerrar la app
+        # Catch any permission or write errors without closing the app
         print(f"Error saving file: {e}\n")
 
 
 def load_csv(file_name):
     """
-    Carga productos desde un archivo CSV.
-    Omite filas inválidas y cuenta cuántas fueron para avisarle al usuario.
+    Upload products from a CSV file.
+    Skip invalid rows and count how many there were to notify the user.
     """
     loaded_students = []
     skipped_lines = 0
@@ -41,16 +41,16 @@ def load_csv(file_name):
         with open(file_name, "r", encoding="utf-8") as file:
             lines = file.readlines()
 
-            # Si el archivo está vacío
+            # If the file is empty
             if len(lines) <= 1:
                 print("File is empty or only has headers.\n")
                 return loaded_students
 
-            # Recorrer a partir de la fila 1 para saltar el encabezado
+            # Scroll from row 1 to skip the header
             for i in range(1, len(lines)):
                 parts = lines[i].strip().split(",")
 
-                # Validar que tenga exactamente 5 columnas
+                # Validate that it has exactly 5 columns
                 if len(parts) != 5:
                     skipped_lines += 1
                     continue
@@ -62,8 +62,8 @@ def load_csv(file_name):
                     course = parts[3].strip()
                     status = parts[4].strip()
 
-                    # Validar que no sean negativos
-                    if id < 0 or age < 0:
+                    # Validate that they are not negative
+                    if ui < 0 or age < 0:
                         skipped_lines += 1
                         continue
 
@@ -77,7 +77,7 @@ def load_csv(file_name):
                     loaded_students.append(student)
 
                 except ValueError:
-                    # If ui or age are not numbers, skip this line fila
+                    # If ui or age are not numbers, skip this row
                     skipped_lines += 1
 
         print(f"\nFile loaded. {len(loaded_students)} student found.")
