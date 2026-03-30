@@ -19,7 +19,7 @@ def save_csv(students, file_name):
 
             # Escribir productos
             for student in students:
-                line = f"Name: {student['name']} | Unique indetifier: ${student['unique indetifier']} | Age: {student['age']} | Course: {student['course']} | Status: {student['status']}\n"
+                line = f"Name: {student['name']} | Unique indetifier: ${student['ui']} | Age: {student['age']} | Course: {student['course']} | Status: {student['status']}\n"
                 file.write(line)
 
         print(f"Students saved successfully in {file_name}.\n")
@@ -69,7 +69,7 @@ def load_csv(file_name):
 
                     student = {
                         "name": name,
-                        "unique identifier": unique_identifier,
+                        "ui": ui,
                         "age": age,
                         "course": course,
                         "status": status
@@ -80,12 +80,12 @@ def load_csv(file_name):
                     # Si el precio o la cantidad no son números, se omite esta fila
                     skipped_lines += 1
 
-        print(f"\nFile loaded. {len(loaded_inventory)} products found.")
+        print(f"\nFile loaded. {len(loaded_students)} products found.")
         
         if skipped_lines > 0:
             print(f"Warning: {skipped_lines} invalid rows were skipped.")
             
-        return loaded_inventory
+        return loaded_students
 
     except FileNotFoundError:
         print("\nError: The specified file was not found.\n")

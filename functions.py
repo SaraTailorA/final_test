@@ -17,8 +17,8 @@ def add_student(students):
 
     try:
         # 1. Pedimos y validamos el ID INMEDIATAMENTE
-        unique_identifier = float(input("Enter student's ID $: \n"))
-        if unique_identifier < 0:
+        ui = float(input("Enter student's ID: \n"))
+        if ui < 0:
             print("Error: Unique identifier (UI) cannot be negative.\n")
             return  # Lo expulsa al menú ANTES de pedir la edad
 
@@ -45,7 +45,7 @@ def add_student(students):
         # 3. If everything is good, save it.
         student = {
             "name": name,
-            "unique identifier": unique_identifier,
+            "ui": ui,
             "age": age,
             "course": course,
             "status": status
@@ -68,7 +68,7 @@ def students_list(students):
         print("                  Students ")
         print("-" * 50)
         for student in students:
-            print(f"Name: {student['name']} | Unique indetifier: ${student['unique indetifier']} | Age: {student['age']} | Course: {student['course']} | Status: {student['status']}")
+            print(f"Name: {student['name']} | Unique indetifier: ${student['ui']} | Age: {student['age']} | Course: {student['course']} | Status: {student['status']}")
         print()
 
 
@@ -80,7 +80,7 @@ def search_student(students):
 
     for student in students:
         if student["name"].lower() == name.lower():
-            print(f"\nStudent found -> Name: {student['name']} | Unique indetifier: ${student['unique indetifier']} | Age: {student['age']} | Course: {student['course']} | Status: {student['status']}\n")
+            print(f"\nStudent found -> Name: {student['name']} | Unique indetifier: ${student['ui']} | Age: {student['age']} | Course: {student['course']} | Status: {student['status']}\n")
             return
 
     print("Student not found.\n")
