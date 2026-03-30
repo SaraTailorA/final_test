@@ -8,7 +8,7 @@ students = []
 option = ""
 
 # Main loop to show the main until the user choose exit(8)
-while option != "9":
+while option != "8":
     print("=" * 40)
     print("                   MENU                  ")
     print("=" * 40)
@@ -46,12 +46,12 @@ while option != "9":
         file_name = input("Enter file name to load: ")
         loaded_students = load_csv(file_name)
         
-        # Si se cargó información correctamente, preguntamos qué hacer con ella
+        # If the information was uploaded correctly, we ask what to do with it
         if loaded_students:
             choice = input("Overwrite current student list? (Y/N): ").strip().upper()
             
             if choice == "Y":
-                # Sobrescribir: reemplazamos la lista actual
+                # Overwrite: We replace the current list
                 students = loaded_students
                 print("Student list overwritten successfully.\n")
             else:
@@ -60,12 +60,14 @@ while option != "9":
                     found = False
                     for existing_item in students:
                         if existing_item["name"].lower() == new_item["name"].lower():
-                            existing_item["quantity"] += new_item["quantity"]
-                            existing_item["price"] = new_item["price"]
+                            existing_item["ui"] += new_item["ui"]
+                            existing_item["age"] = new_item["age"]
+                            existing_item["course"] = new_item["course"]
+                            existing_item["status"] = new_item["status"]
                             found = True
                             break
                     
-                    # Si no se encontró el producto, lo agregamos como nuevo
+                    # If the product was not found, we added it as new.
                     if not found:
                         students.append(new_item)
                 print("Student list merged successfully.\n")

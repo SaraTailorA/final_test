@@ -15,11 +15,11 @@ def save_csv(students, file_name):
         # 'with' abre el archivo y lo cierra automáticamente al terminar
         with open(file_name, "w", encoding="utf-8") as file:
             # Escribir encabezado
-            file.write("name,unique identifier, age, course, status\n")
+            file.write("name, ui, age, course, status\n")
 
             # Escribir productos
             for student in students:
-                line = f"Name: {student['name']} | Unique indetifier: ${student['ui']} | Age: {student['age']} | Course: {student['course']} | Status: {student['status']}\n"
+                line = f"Name: {student['name']} | ui: {student['ui']} | Age: {student['age']} | Course: {student['course']} | Status: {student['status']}\n"
                 file.write(line)
 
         print(f"Students saved successfully in {file_name}.\n")
@@ -50,14 +50,14 @@ def load_csv(file_name):
             for i in range(1, len(lines)):
                 parts = lines[i].strip().split(",")
 
-                # Validar que tenga exactamente 3 columnas
+                # Validar que tenga exactamente 5 columnas
                 if len(parts) != 5:
                     skipped_lines += 1
                     continue
 
                 try:
                     name = parts[0].strip()
-                    unique_identifier = float(parts[1])
+                    ui = int(parts[1])
                     age = int(parts[2])
                     course = parts[3].strip()
                     status = parts[4].strip()
@@ -74,13 +74,13 @@ def load_csv(file_name):
                         "course": course,
                         "status": status
                     }
-                    loaded_students.append(product)
+                    loaded_students.append(student)
 
                 except ValueError:
-                    # Si el precio o la cantidad no son números, se omite esta fila
+                    # If ui or age are not numbers, skip this line fila
                     skipped_lines += 1
 
-        print(f"\nFile loaded. {len(loaded_students)} products found.")
+        print(f"\nFile loaded. {len(loaded_students)} student found.")
         
         if skipped_lines > 0:
             print(f"Warning: {skipped_lines} invalid rows were skipped.")
