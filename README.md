@@ -1,6 +1,6 @@
 
 # Student Registration System
-Welcome to my inventory management project! This is a Python program designed to facilitate the recording and tracking of student data.
+Welcome to my Student Registration project! This is a Python program designed to facilitate the recording and tracking of student data.
 ---
 ## Description
 
